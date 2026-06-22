@@ -1,18 +1,16 @@
 name: Update gist with WakaTime stats
 on:
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "0 0 * * *"
   # Manual triggers with workflow_dispatch
   workflow_dispatch:
-
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # 升级到了稳定的 v4 版本
+      - uses: actions/checkout@master
       - name: Update gist
-        # 替换为社区持续维护并支持新版环境的 waka-box-fast
-        uses: g1eny0ung/waka-box@v6 
+        uses: matchai/waka-box@master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: 3a1b94579d76261eb4749796f4879fb4
